@@ -1,0 +1,110 @@
+ion-toolbar {
+    --background: rgba(38, 36, 60, 255);
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    ion-title {
+      padding: 0;
+      margin-left: 10px;
+      --color: white;
+    }
+  
+    ion-button {
+      margin-right: 10px;
+      margin-left: 10px;
+      --color: white;
+      --background: rgba(211, 74, 89, 0.8);
+      --border-radius: 10px;
+    }
+  }
+  
+  .input-error {
+    font-size: small;
+    color: red;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  ion-content {
+    --background: rgba(38, 36, 60, 255);
+  
+    img {
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      border: 4px solid rgba(211, 74, 89, 0.8);
+    }
+    ion-label {
+      text-align: center;
+      color: white;
+    }
+  
+    /*   ion-item {
+      --background: rgba(38, 36, 60, 255);
+      --color: white;
+      text-align: center;
+      width: 80%;
+      margin: auto;
+      margin-top: 30px;
+    } */
+    ion-icon {
+      color: white;
+    }
+    ion-segment-button {
+      --indicator-color: rgba(211, 74, 89, 255);
+    height: 20px;
+    }
+  
+    ion-card {
+      --background: rgba(38, 36, 60, 255);
+      border: 3px solid rgba(211, 74, 89, 255);
+     /*  padding-top: 0; */
+      /* box-shadow: 1px 1px 20px 8px  rgba(211, 74, 89, 255); */
+  
+      ion-card-title {
+        --color: white;
+        display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 10px;
+      margin-right: 10px;
+  
+        ion-button{
+          --background: rgba(211, 74, 89, 255);
+        }
+      }
+  
+      ion-list {
+        background-color: rgba(38, 36, 60, 255);
+  
+        .active {
+          border-left: 5px solid rgba(211, 74, 89, 255);
+        }
+        ion-item {
+          --background: rgba(38, 36, 60, 255);
+          --color: white;
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+  
+  #patient-doctor-button {
+  margin: 0;
+  padding: 0;;
+  }
+  
+  #info-patients{
+  margin: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  }
+  
+  #detail-card {
+  padding-top: 0px;
+  }
+  

@@ -1,0 +1,54 @@
+<!-- Highcharts -->
+<script src="https://code.highcharts.com/indicators/indicators-all.js"></script>
+<script src="https://code.highcharts.com/indicators/indicators.js"></script>
+<script src="https://code.highcharts.com/indicators/rsi.js"></script>
+<script src="https://code.highcharts.com/indicators/ema.js"></script>
+<script src="https://code.highcharts.com/indicators/macd.js"></script>
+<script src="https://code.highcharts.com/modules/drag-panes.js"></script>
+<script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+<script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+<!-- <script src="https://code.highcharts.com/modules/full-screen.js"></script> -->
+<script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+<link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+         
+            <ion-button size="small" *ngIf="kesz == false" (click)="skip()" >Skip</ion-button>
+            <ion-button size="small" *ngIf="kesz == false" (click)="paused()" >Pause</ion-button>
+            <ion-button size="small" *ngIf="kesz == false" (click)="play()" >Play</ion-button>
+            <ion-button size="small" *ngIf="kesz == true" (click)="saveRecord()">Save</ion-button>
+           
+              <ion-button size="small" (click)="p()" value="p">P<p id="p"></p> </ion-button>
+              <ion-button size="small" (click)="t()" value="t">T<p id="t"></p> </ion-button>
+              <ion-button size="small" (click)="qrs()" value="qrs">QRS<p id="qrs"></p></ion-button>
+              <ion-button size="small" (click)="st()" value="st">ST<p id="st"></p></ion-button>
+              <ion-button size="small" (click)="u()" value="u">U<p id="u"></p> </ion-button>
+           
+        </ion-col>
+        <ion-col>
+          <div id="bpm"></div> 
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+   
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <highcharts-chart *ngIf="isChart == true && kesz == false" [Highcharts]="Highcharts" [constructorType]="'stockChart'"
+    [options]="chartOptions" style="width: 100%; height:100%; display: block;">
+  </highcharts-chart>
+
+  <highcharts-chart *ngIf="kesz == true && isChart == false" [Highcharts]="Highcharts" [options]="chartOptions"
+    [constructorType]="'stockChart'" style="width: 100%; height:100%; display: block;">
+  </highcharts-chart>
+</ion-content>

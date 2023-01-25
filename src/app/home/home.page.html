@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+    <ion-button>
+     <!--  <a (click)="authService.signOut()">LogOut</a> -->
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <strong>Ready to create an app?</strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div>
+
+
+
+     <!-- Show user data when logged in -->
+     <div class="row" *ngIf="authService.currUser as user">
+      <div class="col-md-12">
+        <div class="media">
+          
+          
+          <div class="media-body">
+            <h1>Hello: <strong>{{authService.currUser.name}}</strong></h1>
+            <!-- <p>User ID: <strong>{{user.uid}}</strong></p> -->
+            <p>Email: <strong>{{user.email}}</strong></p>
+            <p>Phone Number: <strong>{{user.phoneNumber}}</strong></p>
+            <p>Medical: <strong>{{user.medical}}</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</ion-content>

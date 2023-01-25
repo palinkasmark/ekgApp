@@ -1,0 +1,147 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="end" size="small" (click)="authService.signOut()">Sign Out</ion-button>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+  
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <img src="assets/profile.png">
+          <ion-label *ngIf="info != undefined">
+            <h2>{{ info.name }}</h2>
+            <p>{{ info.email }}</p>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+    <ion-grid id="info-records">
+      <ion-row class="ion-text-center">
+        <ion-col>
+          <ion-segment [(ngModel)]="selectButton" (ionChange)="patientInfo($event)" value="info">
+            <ion-segment-button value="info" active>
+              <ion-label>Info</ion-label>
+              <ion-icon name="information"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="records"  > <!-- (click)="authService.getPatients()" -->
+              <ion-label>Records</ion-label>
+              <ion-icon name="heart-outline"></ion-icon>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+    <ion-grid id="detail-card" *ngIf="info != undefined">
+      <ion-row>
+        <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+          <ion-card>
+            <ion-card-header id="patient-doctor-button">
+              <ion-card-title *ngIf="option == true" class="ion-text-left">                
+                <ion-grid >
+                  <ion-row class="ion-text-center">
+                    <ion-col>
+                      <ion-segment [(ngModel)]="selectInfo" (ionChange)="MyDoctorInfo($event)" value="patientInfo">
+                        <ion-segment-button  value="patientInfo" active>
+                          <ion-label>Patient Info</ion-label>
+                        </ion-segment-button>
+                        <ion-segment-button  value="myDoctorInfo">
+                          <ion-label>{{ authService.currentPatDocName }}</ion-label>
+                        </ion-segment-button>
+                      </ion-segment>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-card-title>
+              <ion-card-title *ngIf="option == false" class="flex-container">
+                Records
+                <!-- <ion-button class="ion-button" > --> <!-- routerLink="/patients" -->
+                  <!-- <ion-icon name="add"></ion-icon>
+                </ion-button> -->
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-list class="menu-items" lines="none" *ngIf="option == true && myAndDoctorData == true ">
+                <ion-item class="active">
+                  <p>
+                    <strong>Name: </strong> {{ info.name }}
+                  </p>
+                </ion-item>
+                <ion-item class="active">
+                  <p>
+                    <strong>E-mail: </strong> {{ info.email }}
+                  </p>
+                </ion-item>
+                <ion-item class="active">
+                  <p>
+                    <strong>Phone number: </strong> {{ info.phoneNumber }}
+                  </p>
+                </ion-item>
+                <ion-item class="active">
+                  <p>
+                    <strong>Gender: </strong> {{ info.gender }}
+                  </p>
+                </ion-item>
+                <ion-item class="active">
+                  <p>
+                    <strong>Birthday: </strong> {{ info.birthDate }}
+                  </p>
+                </ion-item>
+                <ion-item class="active">
+                  <p>
+                    <strong>Taj: </strong> {{ info.taj }}
+                  </p>
+                </ion-item>
+              </ion-list>
+              <ion-list class="menu-items" lines="none" *ngIf="option == false" >
+
+                <div *ngFor="let data of recordDatas">
+                  <ion-item class="active"   [routerLink]=" [ '/ecg-load', { url: data.url } ] "  >
+                    <p>
+                      <strong>Date: </strong> {{ data.date }}
+                    </p>
+                  </ion-item>
+  
+                </div>
+              </ion-list>
+              <ion-list class="menu-items" lines="none" *ngIf="myAndDoctorData == false && option == true">
+                <ion-item class="active">
+                  <p>
+                    <strong>Name: </strong> {{ authService.currentPatDocName }}
+                  </p>
+                </ion-item>
+                <ion-item class="active">
+                  <p>
+                    <strong>E-mail: </strong> {{ authService.currentPatDocEmail }}
+                  </p>
+                </ion-item>
+                <ion-item class="active">
+                  <p>
+                    <strong>Phone number: </strong> {{ authService.currentPatDocPhoneNumber }}
+                  </p>
+                </ion-item>
+                <ion-item class="active">
+                  <p>
+                    <strong>Medical: </strong> {{ authService.currentPatDocMedical }}
+                  </p>
+                </ion-item>
+              </ion-list>
+             <!--  <ion-list class="menu-items" lines="none" *ngIf="option == false">
+                <ion-item [routerLink]="'/patient/' + 
+                 user.uid"  class="active" *ngFor="let user of info">
+                  <p >
+                    <strong>Name: </strong> {{ user.name }} 
+                    <strong>Uid: </strong> {{ user.uid }}
+                  </p>
+                </ion-item>
+              </ion-list> -->
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>

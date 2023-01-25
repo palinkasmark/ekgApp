@@ -1,0 +1,135 @@
+<ion-header  class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/doctors">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #addPatientForm="ngForm" (ngSubmit)="onSubmit(addPatientForm)" > 
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input
+            type="text"
+            placeholder="Name"
+            ngModel name="name"
+            #nameCtrl="ngModel"
+            required
+            ></ion-input>
+          </ion-item>
+          <p class="input-error" *ngIf="!nameCtrl.valid && nameCtrl.touched">
+              Should be a name.
+          </p>
+          <br>
+          <ion-item>
+            <ion-input
+            type="email"
+            placeholder="Email"
+            name="email" 
+            #emailCtrl="ngModel" ngModel
+            required
+            pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+            ></ion-input>
+          </ion-item>
+          <p class="input-error" *ngIf="!emailCtrl.valid && emailCtrl.touched">
+              Should be a valid email address.
+          </p>
+          <br>
+          <ion-item>
+            <ion-input
+            type="tel"
+            placeholder="Phone number"
+            name="phoneNumber" 
+            #phoneNumberCtrl="ngModel" ngModel
+            required pattern="[0-9]{9}"
+            ></ion-input>
+          </ion-item>
+          <p class="input-error" *ngIf="!phoneNumberCtrl.valid && phoneNumberCtrl.touched">
+              Should be a valid phone number.
+          </p>
+          <!-- <br>
+          <ion-item>
+            <ion-input
+            type="text"
+            placeholder="Age"
+            name="age" 
+            #ageCtrl="ngModel" ngModel
+            required pattern="[0-9]{2}"
+            ></ion-input>
+          </ion-item>
+          <p class="input-error" *ngIf="!ageCtrl.valid && ageCtrl.touched">
+              Should be age.
+          </p> -->
+          <br>
+          <ion-item>
+            
+            <ion-datetime
+            displayFormat="YYYY MM DD"
+            min="1900" max="2021"
+            name="birthDate" 
+            #birthDateCtrl="ngModel" ngModel
+            required placeholder="Birth Date"
+            >
+
+            </ion-datetime>
+            <!-- <ion-input
+            type="date"
+            placeholder="Birth Date"
+            name="birthDate" 
+            #birthDateCtrl="ngModel" ngModel
+            required
+            ></ion-input> -->
+          </ion-item>
+          <p class="input-error" *ngIf="!birthDateCtrl.valid && birthDateCtrl.touched">
+              Should be birthday.
+          </p>
+          <br>
+          <ion-item>
+            <!-- <ion-label>Gender</ion-label> -->
+            <ion-select
+            required
+            ngModel
+            #genderCtrl="ngModel"
+            [(ngModel)]="gender"
+            [ngModelOptions]="{standalone: true}"
+            placeholder="Gender">
+              <ion-select-option value="female">Female</ion-select-option>
+              <ion-select-option value="male">Male</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <p class="input-error" *ngIf="!genderCtrl.valid && genderCtrl.touched" >
+              Please select gender.
+          </p>
+          <br>
+          <ion-item>
+            <ion-input
+            type="text"
+            placeholder="Taj"
+            name="taj" 
+            #tajCtrl="ngModel" ngModel
+            required pattern="[0-9]{9}"
+            ></ion-input>
+          </ion-item>
+          <p class="input-error" *ngIf="!tajCtrl.valid && tajCtrl.touched">
+            Should be a valid taj.
+        </p>
+        </ion-col>
+      </ion-row>
+      <br>
+      <ion-row>
+        <ion-col>
+          <ion-button
+          [disabled]="!addPatientForm.valid"
+          type="submit"
+          expand="block"
+          >Add patient</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

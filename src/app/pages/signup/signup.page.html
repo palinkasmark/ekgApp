@@ -1,0 +1,96 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/login">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)" > --> <!-- [formGroup]="signupForm" = #signupForm="ngForm" -->
+  <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)" > <!-- [formGroup]="signupForm" = #signupForm="ngForm" -->
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item >
+            <ion-input
+            type="text"
+            placeholder="Name"
+            ngModel name="name"
+            #nameCtrl="ngModel"
+            required
+            ></ion-input> 
+          </ion-item>
+          <p class="input-error" *ngIf="!nameCtrl.valid && nameCtrl.touched">
+              Should be a name.
+          </p>
+          <br>
+          <ion-item >
+            <ion-input
+            type="email"
+            placeholder="Email"
+            name="email" 
+            #emailCtrl="ngModel" ngModel
+            required
+            pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+            ></ion-input>
+          </ion-item>
+          <p class="input-error" *ngIf="!emailCtrl.valid && emailCtrl.touched">
+              Should be a valid email address.
+          </p>
+          <br>
+          <ion-item >
+            <ion-input
+            type="tel"
+            placeholder="Phone number"
+            name="phoneNumber" 
+            #phoneNumberCtrl="ngModel" ngModel
+            required pattern="[0-9]{9}"
+            ></ion-input>
+          </ion-item>
+          <p class="input-error" *ngIf="!phoneNumberCtrl.valid && phoneNumberCtrl.touched">
+                Should be a valid phone number.
+          </p>
+          <br>
+          <ion-item >
+            <ion-input
+            type="text"
+            placeholder="Medical"
+            name="medical" 
+            #medicalCtrl="ngModel" ngModel
+            required
+            ></ion-input>
+          </ion-item>
+          <p class="input-error" *ngIf="!medicalCtrl.valid && medicalCtrl.touched">
+              Should be a medical.
+          </p>
+          <br>
+          <ion-item >
+            <ion-input
+            type="password"
+            placeholder="Password"
+             name="password"
+            minlength="6" #passwordCtrl="ngModel" ngModel
+            required
+            ></ion-input>
+          </ion-item>
+          <p class="input-error" *ngIf="!passwordCtrl.valid && passwordCtrl.touched"  >
+              Should at least be 6 characters long.
+          </p>
+        </ion-col>
+      </ion-row>
+      <br>
+      <ion-row>
+        <ion-col>
+          <ion-button
+          [disabled]="!signupForm.valid"
+          type="submit"
+          expand="block"
+          >Sign Up</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

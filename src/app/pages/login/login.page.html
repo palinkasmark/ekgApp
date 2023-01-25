@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons >
+      
+        <ion-button (click)="onSwitchLogin()"> {{ isPatient ? 'Doctor' : 'Patient' }} </ion-button>
+        <ion-button routerLink="/signup">Sign Up</ion-button>
+      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" >
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <img src="assets/heartBeat.png">
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="isPatient == false">
+        <ion-col>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-icon name="mail-outline"></ion-icon>
+              </ion-label>
+              <ion-input
+              type="email"
+              ngModel name="email"
+              #emailCtrl="ngModel"
+              required
+              pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+              ></ion-input>
+            </ion-item>
+            <p class="input-error" *ngIf="!emailCtrl.valid && emailCtrl.touched">
+              Should be a valid email address.
+            </p>            
+            <br>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-icon name="key-outline"></ion-icon>
+              </ion-label>
+              <ion-input
+              type="password"
+              ngModel #passwordCtrl="ngModel" name="password"
+              required
+              minlength="6"></ion-input>
+            </ion-item>
+            <p class="input-error" *ngIf="!passwordCtrl.valid && passwordCtrl.touched"  >
+              Should at least be 6 characters long.
+            </p>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="isPatient == true">
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">
+              <ion-icon name="mail-outline"></ion-icon>
+            </ion-label>            
+            <ion-input
+            type="email"
+            ngModel name="email"
+            #emailCtrl="ngModel"
+            required
+            pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+            ></ion-input>
+          </ion-item>
+            <p class="input-error" *ngIf="!emailCtrl.valid && emailCtrl.touched">
+              Should be a valid email address.
+            </p>          
+          <br>
+            <ion-item>
+              <ion-label position="floating">Taj</ion-label>
+              <ion-input
+              type="text"
+              ngModel name="taj"
+              #tajCtrl="ngModel"
+              required
+              pattern="[0-9]{9}"
+              ></ion-input>
+            </ion-item>
+            <p class="input-error" *ngIf="!tajCtrl.valid && tajCtrl.touched">
+              Should be a valid taj.
+            </p>              
+        </ion-col>
+      </ion-row>
+      <br>
+      <ion-row>
+        <ion-col>
+          <ion-button 
+          [disabled]="!loginForm.valid"
+          type="submit"
+          expand="block">Login</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

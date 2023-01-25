@@ -1,0 +1,60 @@
+#bpm{
+    float: right;
+  font-size: 30px;
+  color: green;
+}
+
+
+ion-button {
+    margin-right: 10px;
+    --color: white;
+    --background: rgb(109, 108, 108);
+    --border-radius: 10px;
+  }
+
+  p{
+    margin: 0;
+  }
+
+
+  #p {
+    margin-left: 10px;
+    margin-bottom: 0;
+    height: 10px;
+    width: 10px;
+    background-color: red;
+    border-radius: 50%;
+  }
+  #t {
+    margin-left: 10px;
+    margin-bottom: 0;
+    height: 10px;
+    width: 10px;
+    background-color: green;
+    border-radius: 50%;
+  }
+  #qrs {
+    margin-left: 10px;
+    margin-bottom: 0;
+    height: 10px;
+    width: 10px;
+    background-color: darkblue;
+    border-radius: 50%;
+  }
+  #st {
+    margin-left: 10px;
+    margin-bottom: 0;
+    height: 10px;
+    width: 10px;
+    background-color: orange;
+    border-radius: 50%;
+  }
+  #u {
+    margin-left: 10px;
+    margin-bottom: 0;
+    height: 10px;
+    width: 10px;
+    background-color: cyan;
+    border-radius: 50%;
+  }
+ 

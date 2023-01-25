@@ -1,0 +1,12 @@
+<ion-content>
+
+  <!-- <div echarts [options]="chartOption" class="demo-chart"></div> -->
+
+
+ <!--  <div  id="bpm"  ></div> -->
+
+  <div echarts id="main" [options]="chartOption" [merge]="updateOptions" (chartClick)="chartClicked($event)" ></div>
+
+
+</ion-content>
+
